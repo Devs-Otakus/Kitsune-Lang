@@ -52,3 +52,12 @@ if (y > 15) {
 } else {
   print("Menor ou igual a 15.");
 }
+```
+
+##🤝 Equipe
+
+Este projeto está sendo desenvolvido por um grupo de entusiastas da programação e compiladores, com o objetivo de aprendizado e experimentação.
+
+##📜 Licença
+
+MIT License — use, modifique e distribua à vontade!
