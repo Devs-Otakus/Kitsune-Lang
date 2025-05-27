@@ -72,83 +72,117 @@ Inspirada em linguagens funcionais e fortemente tipadas, a Kitsune Lang foca na 
 ### Variáveis e Tipagem
 
 ```kitsune
-let idade: Int = 20;
-LET PI: Float = 3.14;
-let nome = "Kurama";
+let contador: Int = 0;        // variável mutável do tipo inteiro
+let mensagem = "Olá, Kurama!"; // tipo inferido como String
+
+LET PI: Float = 3.14159;      // constante do tipo float
+LET ATIVO = true;             // constante booleana (tipo inferido)
+
 ```
 
 ### Funções
 
 ```kitsune
+// Função que recebe dois inteiros e retorna a soma
+fun somar(a: Int, b: Int) -> Int do
+    return a + b;
+end
+
+// Função que imprime uma saudação
 fun saudacao(nome: String) -> Void do
     print("Olá, ${nome}!");
 end
 
-fun somar(a: Int, b: Int) -> Int do
-    return a + b;
+// Função de ordem superior: recebe outra função como argumento
+fun aplicarOperacao(valor: Int, operacao: (Int) -> Int) -> Int do
+    return operacao(valor);
 end
 ```
 
 ### Controle de Fluxo
 
 ```kitsune
+let idade = 20;
+
+// Condicional simples com else if
 if idade >= 18 do
-    print("Adulto");
+    print("Maior de idade.");
 else if idade >= 0
-    print("Menor de idade");
+    print("Menor de idade.");
 else
-    print("Idade inválida");
+    print("Idade inválida.");
 end
 
+// Loop while com incremento manual
+let contador = 0;
 while contador < 3 do
-    print(contador);
+    print("Contador: ${contador}");
     contador = contador + 1;
 end
 
+// Loop for de 1 a 5 (inclusive)
 for i in 1..5 do
-    print(i);
+    print("Número: ${i}");
 end
 ```
 
 ### Estruturas de Dados: Listas
 
 ```kitsune
-let frutas: List<String> = ["Maçã", "Banana"];
-print(frutas[0]);
+let frutas: List<String> = ["Maçã", "Banana", "Uva"];  // Declara lista de strings
+
+print("Primeira fruta: ${frutas[0]}");                 // Acessa elemento da lista
+
+// Itera sobre cada fruta
+for fruta in frutas do
+    print("Fruta: ${fruta}");
+end
 ```
 
 ### Objetos / Registros (Structs)
 
 ```kitsune
+// Define uma estrutura de dados
 def struct Produto {
     nome: String,
-    preco: Float
+    preco: Int,
+    categorias: List<String>
 }
 
-let p: Produto = {
-    nome: "Café",
-    preco: 14.99
-};
+// Instancia um objeto da struct Produto
+let meuNotebook: Produto = {
+    nome: "Notebook Pro X",
+    preco: 2500,
+    categorias: ["Eletrônicos", "Informática"]
+}
+
+// Acessa os campos da struct com ponto
+print "Detalhes: ${meuNotebook.nome}, R$${meuNotebook.preco}";
 ```
 
 ### Sistema de Módulos
 
 ```kitsune
-// utils.krm
-package "utils"
+// Arquivo: src/util/math.krm
+package "util"
+
+// Exporta constante, função e tipo
+<< LET PI: Float = 3.14159;
 
 << fun dobro(n: Int) -> Int do
     return n * 2;
 end
 
-<< struct Ponto {
+<< def struct Ponto {
     x: Int,
     y: Int
 }
 
-// main.krm
-package "main"
->> "utils" (dobro, Ponto as Coord);
+// Arquivo: src/app/main.krm
+package "app"
+
+// Importa símbolos específicos do módulo
+>> "util" (PI, dobro, Ponto as Coord);
 ```
 
 ---
