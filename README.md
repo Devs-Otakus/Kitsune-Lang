@@ -43,6 +43,7 @@ Inspirada em em Linguagens funcional e fortementes tipadas, a Kitsune Lang foca 
 - **100% Tipada:** Todos os valores e expressões têm tipo definido estaticamente, garantindo segurança e previsibilidade.
 - **Funcional (Foco Inicial):** Promove imutabilidade e trata funções como “cidadãos de primeira classe”.
 - **Sintaxe Limpa e Distinta:** Não utiliza `{}` para blocos de código (reservadas para literais de objetos). Usa a palavra-chave `end` e setas (`->`, `<<`, `>>`) para fluxo e relações.
+- **Uso obrigatório de ponto e vigula ";" 
 
 ---
 
@@ -68,11 +69,11 @@ Kitsune Lang é projetada com foco em clareza, segurança de tipos e paradigma f
 - Tipagem explícita ou inferida
 
 ```kitsune
-let contador: Int = 0
-let mensagem = "Olá, Kurama!"
+let contador: Int = 0;
+let mensagem = "Olá, Kurama!";
 
-LET PI: Float = 3.14159
-LET ATIVO = true
+LET PI: Float = 3.14159;
+LET ATIVO = true;
 ```
 
 ### Funções
@@ -84,16 +85,16 @@ LET ATIVO = true
 
 ```kitsune
 fun somar(a: Int, b: Int) -> Int
-    return a + b
+    return a + b;
 end
 
 fun saudacao(nome: String) -> Void
-    print("Olá, ${nome}!")
+    print("Olá, ${nome}!");
 end
 
 // Função de ordem superior
 fun aplicarOperacao(valor: Int, operacao: (Int) -> Int) -> Int
-    return operacao(valor)
+    return operacao(valor);
 end
 ```
 
@@ -103,23 +104,23 @@ end
 - Blocos com `end`
 
 ```kitsune
-let idade = 20
-if idade >= 18
-    print("Maior de idade.")
+let idade = 20;
+if idade >= 18;
+    print("Maior de idade.");
 else if idade >= 0
-    print("Menor de idade.")
+    print("Menor de idade.");
 else
-    print("Idade inválida.")
+    print("Idade inválida.");
 end
 
 let contador = 0
 while contador < 3
-    print("Contador: ${contador}")
-    contador = contador + 1
+    print("Contador: ${contador}");
+    contador = contador + 1;
 end
 
 for i in 1..5
-    print("Número: ${i}")
+    print("Número: ${i}");
 end
 ```
 
@@ -132,10 +133,10 @@ end
 - Acesso: `[índice]`
 
 ```kitsune
-let frutas: List<String> = ["Maçã", "Banana", "Uva"]
-print("Primeira fruta: ${frutas[0]}")
+let frutas: List<String> = ["Maçã", "Banana", "Uva"];
+print("Primeira fruta: ${frutas[0]}");
 for fruta in frutas
-    print("Fruta: ${fruta}")
+    print("Fruta: ${fruta}");
 end
 ```
 
@@ -157,7 +158,7 @@ let meuNotebook: Produto = {
     preco: 2500,
     categorias: ["Eletrônicos", "Informática"]
 }
-print "Detalhes do Produto: ${meuNotebook.nome}, Preço: R$${meuNotebook.preco}"
+print "Detalhes do Produto: ${meuNotebook.nome}, Preço: R$${meuNotebook.preco}";
 ```
 
 ### Sistema de Módulos
@@ -170,9 +171,9 @@ print "Detalhes do Produto: ${meuNotebook.nome}, Preço: R$${meuNotebook.preco}"
 // src/util/math.krm
 package "util"
 
-<< LET PI: Float = 3.14159
+<< LET PI: Float = 3.14159;
 << fun dobro(n: Int) -> Int
-    return n * 2
+    return n * 2;
 end
 << def Ponto {
     x: Int,
@@ -181,7 +182,7 @@ end
 
 // src/app/main.krm
 package "app"
->> "util" (PI, dobro, Ponto as Coord)
+>> "util" (PI, dobro, Ponto as Coord);
 ```
 
 ---
