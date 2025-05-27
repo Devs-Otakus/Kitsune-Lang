@@ -1,5 +1,3 @@
----
-
 # 🦊 Kitsune Lang
 
 **Kitsune Lang** é uma linguagem de script interpretada, escrita em Java, criada como projeto educacional para explorar os fundamentos de linguagens de programação e construção de interpretadores.
