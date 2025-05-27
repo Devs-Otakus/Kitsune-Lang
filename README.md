@@ -2,10 +2,10 @@
 
 ---
 
-# 🦊 Kurama Lang
+# 🦊 Kitsune Lang
 
-**Kurama Lang** é uma linguagem de script interpretada, feita em Java, criada como projeto educacional para explorar fundamentos de linguagens de programação e construção de interpretadores.  
-Inspirada em em Linguagens funcional e fortementes tipadas, a Kurama Lang foca na **simplicidade da sintaxe**, **execução em tempo real** e **facilidade de extensão**.
+**Kitsune Lang** é uma linguagem de script interpretada, feita em Java, criada como projeto educacional para explorar fundamentos de linguagens de programação e construção de interpretadores.  
+Inspirada em em Linguagens funcional e fortementes tipadas, a Kitsune Lang foca na **simplicidade da sintaxe**, **execução em tempo real** e **facilidade de extensão**.
 
 ---
 
@@ -48,11 +48,11 @@ Inspirada em em Linguagens funcional e fortementes tipadas, a Kurama Lang foca n
 
 ## 🦊 Visão Geral e Sintaxe
 
-Kurama Lang é projetada com foco em clareza, segurança de tipos e paradigma funcional, inspirando-se em Ruby, Kotlin e outras linguagens fortemente tipadas.
+Kitsune Lang é projetada com foco em clareza, segurança de tipos e paradigma funcional, inspirando-se em Ruby, Kotlin e outras linguagens fortemente tipadas.
 
 ### Comentários
 
-```kurama
+```kitsune
 // Comentário de linha única
 
 /*
@@ -67,7 +67,7 @@ Kurama Lang é projetada com foco em clareza, segurança de tipos e paradigma fu
 - `LET`: constante (imutável)
 - Tipagem explícita ou inferida
 
-```kurama
+```kitsune
 let contador: Int = 0
 let mensagem = "Olá, Kurama!"
 
@@ -82,7 +82,7 @@ LET ATIVO = true
 - Retorno: `-> Tipo` (ou `-> Void`)
 - Blocos delimitados por `end`
 
-```kurama
+```kitsune
 fun somar(a: Int, b: Int) -> Int
     return a + b
 end
@@ -102,7 +102,7 @@ end
 - Condições sem parênteses
 - Blocos com `end`
 
-```kurama
+```kitsune
 let idade = 20
 if idade >= 18
     print("Maior de idade.")
@@ -131,7 +131,7 @@ end
 - Literal: `[ ]`
 - Acesso: `[índice]`
 
-```kurama
+```kitsune
 let frutas: List<String> = ["Maçã", "Banana", "Uva"]
 print("Primeira fruta: ${frutas[0]}")
 for fruta in frutas
@@ -145,7 +145,7 @@ end
 - Instanciados com `{ }`
 - Campos acessados por ponto
 
-```kurama
+```kitsune
 def Produto {
     nome: String,
     preco: Int,
@@ -166,7 +166,7 @@ print "Detalhes do Produto: ${meuNotebook.nome}, Preço: R$${meuNotebook.preco}"
 - Exportação: `<<` (antes de `let`, `LET`, `fun`, `def`)
 - Importação: `>> "caminho" (símbolos)`
 
-```kurama
+```kitsune
 // src/util/math.krm
 package "util"
 
