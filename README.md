@@ -27,7 +27,7 @@ Kurama Lang é uma linguagem de programação em desenvolvimento, projetada com 
 
 ## 🚀 Sintaxe Básica
 
-Comentários
+###Comentários
 ```kurama
 // Este é um comentário de linha única
 
@@ -37,11 +37,11 @@ Comentários
 */
 ```
 
-Variáveis e Tipagem
-```kurama
+###Variáveis e Tipagem
  * let (mutável): Variáveis cujo valor pode ser alterado.
  * LET (imutável/constante): Variáveis cujo valor não pode ser alterado após a inicialização.
  * Declaração de Tipo: Usando : (dois pontos), tipo obrigatório se não houver inferência.
+```kurama
 let contador: Int = 0          // Variável mutável, tipo explícito
 let mensagem = "Olá, Kurama!" // Variável mutável, tipo String inferido
 
@@ -49,7 +49,7 @@ LET PI: Float = 3.14159        // Constante imutável, tipo Float explícito
 LET ATIVO = true               // Constante imutável, tipo Bool inferido
 ```
 
-Funções
+###Funções
  * Palavra-chave: fun
  * Parâmetros: nome: Tipo
  * Retorno: -> Tipo (ou -> Void para funções sem retorno).
@@ -86,7 +86,7 @@ fun main() -> Void
 end
 ```
 
-Controle de Fluxo
+###Controle de Fluxo
  * Condições não usam parênteses ().
  * Blocos são delimitados por end.
 ```kurama
@@ -113,7 +113,7 @@ for i in 1..5 // Range de 1 a 5
 end
 ```
 
-📦 Estruturas de Dados
+###📦 Estruturas de Dados
 Arrays / Listas
  * Coleções ordenadas e homogêneas (todos os elementos do mesmo tipo).
  * Tipo: List<ElementType>
@@ -128,7 +128,7 @@ for fruta in frutas
 end
 ```
 
-Objetos / Registros (Structs)
+###Objetos / Registros (Structs)
  * Representam estruturas de dados com campos nomeados e tipos fixos.
  * Não são objetos dinâmicos como em JavaScript (sem um def correspondente).
  * Definição do Tipo: Usando a palavra-chave def. Campos podem ter tipos heterogêneos.
@@ -183,7 +183,7 @@ for prod in PRODUTOS_EM_ESTOQUE
 end
 ```
 
-📦 Sistema de Módulos
+###📦 Sistema de Módulos
 Sistema de módulos visual e direto para organizar e reutilizar código.
  * Declaração de Pacote: package "nome_do_pacote"
    * No topo de cada arquivo, indica a qual pacote o arquivo pertence.
@@ -228,7 +228,8 @@ fun main() -> Void
 end
 ```
 
-📈 Evolução Futura: Orientação a Objetos (OO)
+##📈 Evolução Futura: Orientação a Objetos (OO)
+
  * Os defs atuais fornecem uma base sólida para a parte de dados de objetos.
  * Futuramente, a Kurama Lang poderá estender a lógica dos defs para introduzir conceitos de OO, como classes (class ou obj), que encapsulam dados E comportamento (métodos). Isso pode envolver a reintrodução do conceito de this para métodos de instância, além de herança e polimorfismo.
 Este resumo deve fornecer uma visão clara e concisa do design atual da Kurama Lang para sua equipe e para o README do GitHub!
