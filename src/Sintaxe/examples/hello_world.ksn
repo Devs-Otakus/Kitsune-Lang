@@ -1,0 +1,6 @@
+// Hello World em Kurama
+
+LET NAME: String = 'Kitsune'
+fun main()
+  print('"Hello, ${NAME}"')
+end
