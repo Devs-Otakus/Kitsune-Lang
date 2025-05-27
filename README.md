@@ -1,4 +1,4 @@
----
+
 
 # 🦊 Kitsune Lang
 
@@ -9,15 +9,15 @@ Inspirada em linguagens funcionais e fortemente tipadas, a Kitsune Lang foca na 
 
 ## 📚 Sumário
 
-* [Objetivos do Projeto](#objetivos-do-projeto)
-* [Filosofia e Pilares](#filosofia-e-pilares)
-* [Paradigmas e Características Principais](#paradigmas-e-características-principais)
-* [Visão Geral e Sintaxe](#visão-geral-e-sintaxe)
-* [Evolução Futura: Orientação a Objetos](#evolução-futura-orientação-a-objetos)
-* [Principais Conceitos Envolvidos](#principais-conceitos-envolvidos)
-* [Estado Atual do Projeto](#estado-atual-do-projeto)
-* [Equipe](#equipe)
-* [Licença](#licença)
+* [Objetivos do Projeto](##objetivos-do-projeto)
+* [Filosofia e Pilares](##filosofia-e-pilares)
+* [Paradigmas e Características Principais](##paradigmas-e-características-principais)
+* [Visão Geral e Sintaxe](##visão-geral-e-sintaxe)
+* [Evolução Futura: Orientação a Objetos](##evolução-futura-orientação-a-objetos)
+* [Principais Conceitos Envolvidos](##principais-conceitos-envolvidos)
+* [Estado Atual do Projeto](##estado-atual-do-projeto)
+* [Equipe](##equipe)
+* [Licença](##licença)
 
 ---
 
