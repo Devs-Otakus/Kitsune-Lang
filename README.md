@@ -232,6 +232,30 @@ def enum ROLES {
     GUEST
 }
 ```
+---
+
+| Palavra reservada | Uso / Descrição                                   |
+| ----------------- | ------------------------------------------------- |
+| `let`             | Declaração de variável mutável                    |
+| `LET`             | Declaração de variável constante/imutável         |
+| `fun`             | Declaração de função                              |
+| `return`          | Palavra para retorno dentro de funções            |
+| `if`              | Condicional                                       |
+| `else`            | Parte do condicional                              |
+| `while`           | Loop `while`                                      |
+| `for`             | Loop `for`                                        |
+| `do`              | Delimita o início de bloco de código              |
+| `end`             | Delimita o fim de bloco de código                 |
+| `def`             | Declaração de estruturas: structs, classes, enums |
+| `struct`          | Definição de struct                               |
+| `class`           | (Futuro) Definição de classe                      |
+| `enum`            | (Futuro) Definição de enum                        |
+| `package`         | Declaração de pacote / módulo                     |
+| `true`            | Literal booleano verdadeiro                       |
+| `false`           | Literal booleano falso                            |
+| `and`             | Operador lógico AND                               |
+| `or`              | Operador lógico OR                                |
+| `not`             | Operador lógico NOT                               |
 
 ---
 
