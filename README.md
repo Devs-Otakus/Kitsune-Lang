@@ -1,29 +1,23 @@
+---
+
 # 🦊 Kitsune Lang
 
-**Kitsune Lang** é uma linguagem de script interpretada, escrita em Java, criada como projeto educacional para explorar os fundamentos de linguagens de programação e construção de interpretadores.
+**Kitsune Lang** é uma linguagem de script interpretada, feita em Java, criada como projeto educacional para explorar fundamentos de linguagens de programação e construção de interpretadores.
 Inspirada em linguagens funcionais e fortemente tipadas, a Kitsune Lang foca na **simplicidade da sintaxe**, **execução em tempo real** e **facilidade de extensão**.
 
 ---
 
 ## 📚 Sumário
 
-* [Objetivos do Projeto](#✨-objetivos-do-projeto)
-* [Filosofia e Pilares](#✨-filosofia-e-pilares)
-* [Paradigmas e Características](#🧹-paradigmas-e-características-principais)
-* [Visão Geral e Sintaxe](#🦊-visão-geral-e-sintaxe)
-
-  * [Comentários](#comentários)
-  * [Variáveis e Tipagem](#variáveis-e-tipagem)
-  * [Funções](#funções)
-  * [Controle de Fluxo](#controle-de-fluxo)
-  * [Estruturas de Dados](#estruturas-de-dados)
-  * [Objetos / Registros](#objetos--registros-structs)
-  * [Sistema de Módulos](#sistema-de-módulos)
-* [Evolução Futura: Orientação a Objetos](#📈-evolução-futura-orientação-a-objetos-oo)
-* [Conceitos Envolvidos](#🧠-principais-conceitos-envolvidos)
-* [Estado Atual](#✅-estado-atual-do-projeto)
-* [Equipe](#🤝-equipe)
-* [Licença](#📜-licença)
+* [Objetivos do Projeto](#objetivos-do-projeto)
+* [Filosofia e Pilares](#filosofia-e-pilares)
+* [Paradigmas e Características Principais](#paradigmas-e-características-principais)
+* [Visão Geral e Sintaxe](#visão-geral-e-sintaxe)
+* [Evolução Futura: Orientação a Objetos](#evolução-futura-orientação-a-objetos)
+* [Principais Conceitos Envolvidos](#principais-conceitos-envolvidos)
+* [Estado Atual do Projeto](#estado-atual-do-projeto)
+* [Equipe](#equipe)
+* [Licença](#licença)
 
 ---
 
@@ -32,7 +26,7 @@ Inspirada em linguagens funcionais e fortemente tipadas, a Kitsune Lang foca na 
 * Aprender e aplicar conceitos de **análise léxica**, **parsing** e **interpretação**
 * Criar uma linguagem de script com sintaxe clara e expressiva
 * Desenvolver um interpretador 100% funcional em Java
-* Entender como linguagens reais funcionam por dentro
+* Entender como linguagens reais são construídas por dentro
 
 ---
 
@@ -73,12 +67,36 @@ Inspirada em linguagens funcionais e fortemente tipadas, a Kitsune Lang foca na 
 
 ```kitsune
 let contador: Int = 0;        // variável mutável do tipo inteiro
-let mensagem = "Olá, Kurama!"; // tipo inferido como String
+let mensagem = 'Olá, Kurama!'; // tipo inferido como String
 
 LET PI: Float = 3.14159;      // constante do tipo float
 LET ATIVO = true;             // constante booleana (tipo inferido)
 
+// strings padrão ( aspas simples ) 'Hello Kitsune'
+LET NAME: String = 'Kitsune';
+
+// para interpolação de strings se usa ( aspas duplas ) "Hello, ${NAME}"
 ```
+
+#### 📌 Diferença entre aspas simples e duplas
+
+Na Kitsune Lang, a forma como strings são delimitadas afeta seu comportamento:
+
+* **Aspas simples (`'`)**: definem strings **literais**. Interpolação **não é permitida**.
+
+  ```kitsune
+  let nome = 'Kurama';
+  print('Olá, ${nome}'); // Saída: Olá, ${nome}
+  ```
+
+* **Aspas duplas (`"`)**: permitem **interpolação de variáveis** ou expressões dentro da string, usando `${}`.
+
+  ```kitsune
+  let nome = 'Kurama';
+  print("Olá, ${nome}"); // Saída: Olá, Kurama
+  ```
+
+---
 
 ### Funções
 
@@ -106,11 +124,11 @@ let idade = 20;
 
 // Condicional simples com else if
 if idade >= 18 do
-    print("Maior de idade.");
+    print('Maior de idade.');
 else if idade >= 0
-    print("Menor de idade.");
+    print('Menor de idade.');
 else
-    print("Idade inválida.");
+    print('Idade inválida.');
 end
 
 // Loop while com incremento manual
@@ -129,7 +147,7 @@ end
 ### Estruturas de Dados: Listas
 
 ```kitsune
-let frutas: List<String> = ["Maçã", "Banana", "Uva"];  // Declara lista de strings
+let frutas: List<String> = ['Maçã', 'Banana', 'Uva'];  // Declara lista de strings
 
 print("Primeira fruta: ${frutas[0]}");                 // Acessa elemento da lista
 
@@ -151,9 +169,9 @@ def struct Produto {
 
 // Instancia um objeto da struct Produto
 let meuNotebook: Produto = {
-    nome: "Notebook Pro X",
+    nome: 'Notebook Pro X',
     preco: 2500,
-    categorias: ["Eletrônicos", "Informática"]
+    categorias: ['Eletrônicos', 'Informática']
 }
 
 // Acessa os campos da struct com ponto
@@ -164,7 +182,7 @@ print "Detalhes: ${meuNotebook.nome}, R$${meuNotebook.preco}";
 
 ```kitsune
 // Arquivo: src/util/math.krm
-package "util"
+package 'util'
 
 // Exporta constante, função e tipo
 << LET PI: Float = 3.14159;
@@ -179,10 +197,10 @@ end
 }
 
 // Arquivo: src/app/main.krm
-package "app"
+package 'app'
 
 // Importa símbolos específicos do módulo
->> "util" (PI, dobro, Ponto as Coord);
+>> 'util' (PI, dobro, Ponto as Coord);
 ```
 
 ---
@@ -197,6 +215,7 @@ package "app"
 ### Exemplo planejado:
 
 ```kitsune
+// Classe com método e mutabilidade controlada
 def class Pessoa {
     nome: String,
     idade: Int
@@ -206,6 +225,7 @@ def class Pessoa {
     end
 }
 
+// Enumeração de papéis de usuário
 def enum ROLES {
     ADMIN,
     USER,
@@ -217,34 +237,31 @@ def enum ROLES {
 
 ## 🧠 Principais Conceitos Envolvidos
 
-* Lexer (analisador léxico)
-* Parser (analisador sintático)
-* AST (Abstract Syntax Tree)
+* Lexer (tokenização do código fonte)
+* Parser (construção de AST)
 * Visitor Pattern
-* Execução de código por interpretação da AST
-* Gerenciamento de escopos e ambiente de execução
+* Execução baseada em AST (interpretação)
+* Escopos, variáveis, controle de fluxo
+* Extensibilidade do interpretador
 
 ---
 
 ## ✅ Estado Atual do Projeto
 
-* [ ] Definição da sintaxe
-* [ ] Lexer básico
-* [ ] Parser para expressões e blocos
-* [ ] Construção de AST
-* [ ] Execução de expressões e variáveis
-* [ ] Sistema de escopo e chamadas de função
+🚧 Em desenvolvimento
+
+*
 
 ---
 
 ## 🤝 Equipe
 
-Desenvolvido por entusiastas de linguagens e educação, como forma de aprendizado e exploração.
+Projeto desenvolvido por entusiastas de programação e compiladores, com foco em aprendizado e experimentação.
 
 ---
 
 ## 📜 Licença
 
-MIT License — livre para uso, modificação e distribuição.
+MIT License — use, modifique e distribua à vontade!
 
 ---
