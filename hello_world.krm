@@ -1,0 +1,5 @@
+// Hello World em Kurama
+
+fun main()
+  print("Hello, World")
+end
