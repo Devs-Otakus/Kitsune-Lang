@@ -1,6 +1,7 @@
-// Hello World em Kurama
+// Hello World em Kitsune Lang
 
-LET NAME: String = 'Kitsune'
 fun main()
-  print('"Hello, ${NAME}"')
+  print("Hello, Ser ou nao ser...")
 end
+
+
