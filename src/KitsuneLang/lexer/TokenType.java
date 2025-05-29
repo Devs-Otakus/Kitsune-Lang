@@ -1,0 +1,46 @@
+package KitsuneLang.lexer;
+
+public enum TokenType {
+	// Comentários
+	COMMENT, BLOCK_COMMENT,
+
+	// Variáveis
+	LET_MUTABLE, LET_IMMUTABLE,
+
+	// Bloco de código
+	DO_BLOCK_START, BLOCK_END,
+
+	// Funções
+	FUNCTION, FUNCTION_CALL,
+
+	// Estruturas de controle
+	IF_CONDITION, ELSE_IF_CONDITION, ELSE_CONDITION, DO_WHILE_LOOP, WHILE_LOOP,
+	FOR_LOOP,
+
+	// Entrada e saída
+	PRINT,
+
+	// Return e Return Type
+	RETURN_STATEMENT, RETURN_TYPE_STATEMENT,
+
+	// Tipos primitivos
+	INT, FLOAT, STRING, BOOL, VOID,
+	// Booleanos
+	TRUE, FALSE, NIL,
+	// Operadores
+	PLUS, MINUS, MULTIPLY, DIVIDE, MODULO, EQUAL_EQUAL, NOT_EQUAL, LESS_THAN,
+	GREATER_THAN, LESS_EQUAL, GREATER_EQUAL, ASSIGN, AND, OR, NOT,
+	// Interpolação
+	// Usado para interpolação de strings, por exemplo: "Hello, ${name}!"
+	INTERPOLATION_START, INTERPOLATION_END,
+
+	// Delimitadores
+	COMMA, SEMICOLON, COLON, DOT, LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE,
+	RIGHT_BRACE, LEFT_BRACKET, RIGHT_BRACKET, STAR,
+
+	// Identificadores e literais
+	IDENTIFIER, INTEGER_LITERAL, FLOAT_LITERAL, STRING_LITERAL, BOOLEAN_LITERAL,
+
+	// Outros tokens
+	EOF,
+}
