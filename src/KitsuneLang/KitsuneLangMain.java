@@ -19,12 +19,27 @@ import KitsuneLang.lexer.Token;
 public class KitsuneLangMain {
     static boolean hadError = false;
 
+    /**
+     * This method is used to report errors encountered during the scanning or
+     * parsing process.
+     *
+     * @param line    The line number where the error occurred.
+     * @param where   A string indicating where the error occurred (optional).
+     * @param message A descriptive message about the error.
+     */
     private static void report(int line, String where, String message) {
         System.err
                 .println("[line " + line + "] Error" + where + ": " + message);
         hadError = true;
     }
 
+    /**
+     * This method is used to report errors encountered during the scanning or
+     * parsing process without specifying a location.
+     *
+     * @param line    The line number where the error occurred.
+     * @param message A descriptive message about the error.
+     */
     public static void error(int line, String message) {
         report(line, "", message);
     }
