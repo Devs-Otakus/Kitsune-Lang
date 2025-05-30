@@ -143,6 +143,7 @@ public class ScannerKitsuneLang {
 			} else {
 				addToken(TokenType.DIVIDE);
 			}
+			break;
 		case ' ':
 		case '\r':
 		case '\t':
