@@ -1,0 +1,90 @@
+package KitsuneLang.lexer;
+
+public enum TokenType {
+
+		// Comments
+		COMMENT,
+		LINE_COMMENT,
+		
+		// Basic Characters
+		LETTER,
+		DIGIT,
+		SIGN,
+		IDENTIFIER,
+
+		// Special Characters
+		NEW_LINE,
+
+		// Types
+		TYPE,
+		BASIC_TYPE,
+		GENERIC_TYPE,
+		FUNCTION_TYPE,
+		
+		// Literals
+		LITERAL,
+		INTEGER_LITERAL,
+		FLOAT_LITERAL,
+		STRING_LITERAL,
+		BOOLEAN_LITERAL,
+		CHARACTER_LITERAL,
+		OBJECT_LITERAL,
+		NULL_LITERAL,
+		ARRAY_LITERAL,
+		
+		// Declaration
+		FIELD_DECLARATION,
+		VARIABLE_DECLARATION,
+		CONSTANT_DECLARATION,
+
+		// Structs
+		STRUCT_DECLARATION,
+
+		// Fields
+		FIELD_ACCESS,
+
+		// Operators
+		ADD_OPERATOR,
+		SUBTRACT_OPERATOR,
+		MULTIPLY_OPERATOR,
+		DIVIDE_OPERATOR,
+		MODULO_OPERATOR,
+		ASSIGNMENT_OPERATOR,
+		LOGICAL_OPERATOR,
+		RELATION_OPERATOR,
+
+		// Expressions
+		EXPRESSION,
+		PRIMARY_EXPRESSION,
+		UNARY_EXPRESSION,
+		FACTOR,
+		TERM,
+		ARITHMETIC_EXPRESSION,
+		LOGICAL_EXPRESSION,
+		RELATIONAL_EXPRESSION,
+
+		// Code Blocks
+		CODE_BLOCK,
+
+		// Returns
+		RETURN_STATEMENT,
+
+		// Functions
+		FUNCTION_DECLARATION,
+		FUNCTION_CALL,
+		FUNCTION_PARAMETER,
+
+		// Control Flow
+		IF_STATEMENT,
+		WHILE_LOOP,
+		FOR_LOOP,
+		
+		// Commands
+		STATEMENT,
+
+		// Program
+		PROGRAM,
+
+		// End of file
+		EOF
+}

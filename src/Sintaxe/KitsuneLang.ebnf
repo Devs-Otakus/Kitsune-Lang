@@ -31,6 +31,7 @@ float_lit = [ sign ], digit, { digit }, ".", digit, { digit };
 boolean_lit = "true" | "false";
 string_char = ? ANY_CHARACTER_EXCEPT_SINGLE_QUOTE ? ;
 string_lit = "'", { string_char }, "'";
+null_lit = "null"
 interpolation = "${", expression, "}";
 interpolated_string = '"', { ( ? ANY_CHARACTER_EXCEPT_DOUBLE_QUOTE ? ) | interpolation }, '"';
 list_lit = "[", [ expression, { ",", expression } ], "]";
