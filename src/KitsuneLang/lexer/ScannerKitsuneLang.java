@@ -34,11 +34,12 @@ public class ScannerKitsuneLang {
 		keywords.put("end", TokenType.BLOCK_END);
 		keywords.put("LET", TokenType.LET_IMMUTABLE);
 		keywords.put("let", TokenType.LET_MUTABLE);
-		keywords.put("Int", TokenType.TYPE_INT);
-		keywords.put("String", TokenType.TYPE_STRING);
-		keywords.put("Bool", TokenType.TYPE_BOOL);
-		keywords.put("Float", TokenType.TYPE_FLOAT);
-		keywords.put("Void", TokenType.TYPE_VOID);
+		keywords.put("int", TokenType.TYPE_INT);
+		keywords.put("string", TokenType.TYPE_STRING);
+		keywords.put("bool", TokenType.TYPE_BOOL);
+		keywords.put("float", TokenType.TYPE_FLOAT);
+		keywords.put("void", TokenType.TYPE_VOID);
+		keywords.put("def", TokenType.DEF);
 		keywords.put("struct", TokenType.STRUCT_DECLARATION);
 		keywords.put("enum", TokenType.ENUM_DECLARATION);
 	}
