@@ -1,0 +1,111 @@
+(* --- Comentários --- *)
+comment = "/*", { ? ANY_CHARACTER_EXCEPT_END_COMMENT ? }, "*/";
+line_comment = "//", { ? ANY_CHARACTER_EXCEPT_NEWLINE ? }, newline;
+
+(* --- Caracteres Básicos --- *)
+newline = "\n" | "\r" | "\r\n";
+
+letter = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" |
+         "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" |
+         "t" | "u" | "v" | "w" | "x" | "y" | "z" |
+         "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" |
+         "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" |
+         "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z";
+
+digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+
+sign = "+" | "-";
+
+(* --- Identificadores --- *)
+identifier = letter, { letter | digit | "_" };
+
+(* --- Tipos --- *)
+basic_type = "Int" | "Float" | "String" | "Bool" | "Void";
+generic_type = identifier, "<", type, { ",", type }, ">";
+function_type = "(", [ type, { ",", type } ], ")", "->", type;
+type = basic_type | generic_type | function_type | identifier;
+
+(* --- Literais --- *)
+integer_lit = [ sign ], digit, { digit };
+float_lit = [ sign ], digit, { digit }, ".", digit, { digit };
+boolean_lit = "true" | "false";
+string_char = ? ANY_CHARACTER_EXCEPT_SINGLE_QUOTE ? ;
+string_lit = "'", { string_char }, "'";
+interpolation = "${", expression, "}";
+interpolated_string = '"', { ( ? ANY_CHARACTER_EXCEPT_DOUBLE_QUOTE ? ) | interpolation }, '"';
+list_lit = "[", [ expression, { ",", expression } ], "]";
+pair = identifier, ":", expression;
+object_lit = "{", [ pair, { ",", pair } ], "}";
+literal = integer_lit | float_lit | boolean_lit | string_lit | interpolated_string | list_lit | object_lit;
+
+(* --- Structs --- *)
+field_decl = identifier, ":", type;
+struct_decl = "def", "struct", identifier, "{", { field_decl, ";" }, "}";
+
+(* --- Acesso a campos --- *)
+field_access = identifier, ".", identifier;
+
+(* --- Operadores --- *)
+add_op = "+"; 
+sub_op = "-"; 
+mult_op = "*"; 
+div_op = "/"; 
+mod_op = "%";
+operator = add_op | sub_op | mult_op | div_op | mod_op;
+logical_op = "and" | "or" | "not";
+rel_op = "==" | "!=" | "<" | "<=" | ">" | ">=";
+
+(* --- Expressões --- *)
+primary_expr = identifier 
+             | literal 
+             | func_call 
+             | field_access 
+             | "(", expression, ")";
+             
+unary_expr = [ "!" | "-" ], primary_expr;
+factor = unary_expr;
+term = factor, { (mult_op | div_op | mod_op), factor };
+arithmetic_expr = term, { (add_op | sub_op), term };
+relational_expr = arithmetic_expr, { rel_op, arithmetic_expr };
+logical_expr = relational_expr, { logical_op, relational_expr };
+expression = logical_expr;
+
+(* --- Declarações --- *)
+(* Variável mutável - minúsculo *)
+var_decl = "let", identifier, ":", type, "=", expression, ";";
+
+(* Variável imutável - maiúsculo *)
+const_decl = "LET", identifier, ":", type, "=", expression, ";";
+
+(* --- Blocos de Código --- *)
+block = "do", { statement }, "end";
+
+(* --- Retorno --- *)
+return_statement = "return", [ expression ], ";";
+
+(* --- Funções --- *)
+param = identifier, ":", type;
+func_decl = "fun", identifier, "(", [ param, { ",", param } ], ")", "->", type , block;
+func_call = identifier, "(", [ expression, { ",", expression } ], ")";
+
+(* --- Controle de Fluxo --- *)
+if_statement = "if", expression, block,
+               { "else", "if", expression, block },
+               [ "else", block ];
+
+while_loop = "while", expression, block;
+for_loop = "for", identifier, "in", expression, block;
+
+(* --- Comandos --- *)
+statement = var_decl
+          | const_decl
+          | if_statement
+          | while_loop
+          | for_loop
+          | func_decl
+          | return_statement
+          | expression, ";"
+          | struct_decl;
+
+(* --- Programa --- *)
+program = { statement };

@@ -1,0 +1,7 @@
+// Hello World em Kitsune Lang
+
+fun main()
+  print("Hello, Ser ou nao ser...")
+end
+
+

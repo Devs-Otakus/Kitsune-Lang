@@ -34,6 +34,13 @@ public class ScannerKitsuneLang {
 		keywords.put("end", TokenType.BLOCK_END);
 		keywords.put("LET", TokenType.LET_IMMUTABLE);
 		keywords.put("let", TokenType.LET_MUTABLE);
+		keywords.put("Int", TokenType.TYPE_INT);
+		keywords.put("String", TokenType.TYPE_STRING);
+		keywords.put("Bool", TokenType.TYPE_BOOL);
+		keywords.put("Float", TokenType.TYPE_FLOAT);
+		keywords.put("Void", TokenType.TYPE_VOID);
+		keywords.put("struct", TokenType.STRUCT_DECLARATION);
+		keywords.put("enum", TokenType.ENUM_DECLARATION);
 	}
 
 	public ScannerKitsuneLang(String source) {
@@ -69,7 +76,11 @@ public class ScannerKitsuneLang {
 
 	private void addToken(TokenType type, Object literal) {
 		String text = source.substring(start, current);
-		tokens.add(new Token(type, text, literal, line));
+		addToken(type, literal, text);
+	}
+
+	private void addToken(TokenType type, Object literal, String lexeme) {
+		tokens.add(new Token(type, lexeme, literal, line));
 	}
 
 	private boolean match(char expected) {
@@ -98,6 +109,12 @@ public class ScannerKitsuneLang {
 		case '}':
 			addToken(TokenType.RIGHT_BRACE);
 			break;
+		case '[':
+			addToken(TokenType.LEFT_BRACKET);
+			break;
+		case ']':
+			addToken(TokenType.RIGHT_BRACKET);
+			break;
 		case ',':
 			addToken(TokenType.COMMA);
 			break;
@@ -105,16 +122,23 @@ public class ScannerKitsuneLang {
 			addToken(TokenType.DOT);
 			break;
 		case '-':
-			addToken(TokenType.MINUS);
+			if (match('>')) {
+				addToken(TokenType.ARROW);
+			} else {
+				addToken(TokenType.MINUS);
+			}
 			break;
 		case '+':
 			addToken(TokenType.PLUS);
 			break;
+		case '*':
+			addToken(TokenType.MULTIPLY);
+			break;
 		case ';':
 			addToken(TokenType.SEMICOLON);
 			break;
-		case '*':
-			addToken(TokenType.STAR);
+		case ':':
+			addToken(TokenType.COLON);
 			break;
 		// Operadores
 		case '!':
@@ -177,10 +201,26 @@ public class ScannerKitsuneLang {
 	}
 
 	private void string() {
+		StringBuilder value = new StringBuilder();
+
 		while (peek() != '\'' && !isAtEnd()) {
-			if (peek() == '\n')
-				line++;
-			advance();
+			if (peek() == '\n') line++;
+
+			if (peek() == '\\') {
+				advance(); // consume '\'
+				if (!isAtEnd()) {
+					char escaped = advance();
+					value.append(switch (escaped) {
+						case 'n' -> '\n';
+						case 't' -> '\t';
+						case '\'' -> '\'';
+						case '\\' -> '\\';
+						default -> escaped;
+					});
+				}
+			} else {
+				value.append(advance());
+			}
 		}
 
 		if (isAtEnd()) {
@@ -188,48 +228,78 @@ public class ScannerKitsuneLang {
 			return;
 		}
 
-		// The closing ".
-		advance();
+		advance(); // consume closing '
 
-		// Trim the surrounding quotes.
-		String value = source.substring(start + 1, current - 1);
-		addToken(TokenType.STRING, value);
-
+		addToken(TokenType.STRING, value.toString());
 	}
 
 	private void interpolation() {
-		while (peek() != '"' && !isAtEnd()) {
-			if (peek() == '\n') {
-				line++;
+		StringBuilder part = new StringBuilder();
+
+		while (!isAtEnd() && peek() != '"') {
+			if (peek() == '\\') {
+				advance();
+				if (!isAtEnd()) {
+					char escaped = advance();
+					part.append(switch (escaped) {
+						case 'n' -> '\n';
+						case 't' -> '\t';
+						case '"' -> '"';
+						case '\\' -> '\\';
+						default -> escaped;
+					});
+				}
 			} else if (peek() == '$' && peekNext() == '{') {
-				// Handle interpolation
-				advance(); // consume $
-				advance(); // consume {
+				if (part.length() > 0) {
+					addToken(TokenType.STRING_PART, part.toString());
+					part.setLength(0);
+				}
+
+				// Interpolation start
+				advance(); // $
+				advance(); // {
+				start = current - 2;
 				addToken(TokenType.INTERPOLATION_START);
-				while (peek() != '}' && !isAtEnd()) {
+
+				// Expression inside ${...}
+				int exprStart = current;
+				while (!isAtEnd() && peek() != '}') {
+					if (peek() == '\n') line++;
 					advance();
 				}
-				if (peek() == '}') {
-					advance(); // consume }
-					addToken(TokenType.INTERPOLATION_END);
+
+				if (isAtEnd()) {
+					KitsuneLangMain.error(line, "Unterminated interpolation.");
+					return;
 				}
+
+				String expr = source.substring(exprStart, current).trim();
+				advance(); // consume }
+
+				addToken(TokenType.IDENTIFIER, expr, expr);
+				start = current - 1;
+				addToken(TokenType.INTERPOLATION_END);
+				start = current;
+
+				// Continue building the part AFTER the interpolation
+			} else {
+				if (peek() == '\n') line++;
+				part.append(advance());
 			}
-			advance();
+		}
+
+		if (part.length() > 0) {
+			addToken(TokenType.STRING_PART, part.toString());
 		}
 
 		if (isAtEnd()) {
-			KitsuneLangMain.error(line, "Unterminated interpolation.");
+			KitsuneLangMain.error(line, "Unterminated string.");
 			return;
 		}
 
-		// The closing '.
-		advance();
-
-		// Trim the surrounding quotes.
-		String value = source.substring(start + 1, current - 1);
-		addToken(TokenType.INTERPOLATION_START, value);
-		addToken(TokenType.INTERPOLATION_END, value);
+		advance(); // consume closing "
 	}
+
 
 	private boolean isDigit(char c) {
 		return c >= '0' && c <= '9';
@@ -272,7 +342,7 @@ public class ScannerKitsuneLang {
 				advance();
 		}
 
-		addToken(TokenType.INTEGER_LITERAL,
+		addToken(TokenType.NUMBER_LITERAL,
 				Double.parseDouble(source.substring(start, current)));
 	}
 }

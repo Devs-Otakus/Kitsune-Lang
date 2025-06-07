@@ -14,7 +14,6 @@ public class Token {
 	}
 
 	public String toString() {
-		return "Token { " + "type = " + type + " | lexeme = '" + lexeme + '\''
-				+ " | object = " + object + " | line = " + line + " \"}";
+		return "Token { " + "type = " + type + " | lexeme = \"" + lexeme + "\" | object = " + object + " | line = " + line + "}";
 	}
 }
