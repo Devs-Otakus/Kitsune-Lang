@@ -1,27 +1,25 @@
-
-
 # 🦊 Kitsune Lang
 
-**Kitsune Lang** é uma linguagem de script interpretada, feita em Java, criada como projeto educacional para explorar fundamentos de linguagens de programação e construção de interpretadores.
+**Kitsune Lang** é uma linguagem de script interpretada, feita em Java, criada como projeto educacional para explorar fundamentos de linguagens de programação e construção de interpretadores.\
 Inspirada em linguagens funcionais e fortemente tipadas, a Kitsune Lang foca na **simplicidade da sintaxe**, **execução em tempo real** e **facilidade de extensão**.
 
-<img src="https://github.com/JaiDev-bot/JaiDev-bot/blob/main/kitsune%20(1).png" width="200px"> 
+<img src="https://github.com/JaiDev-bot/JaiDev-bot/blob/main/kitsune%20(1).png" alt="Logo" data-size="line">
 
----
+***
 
 ## 📚 Sumário
 
-* [Objetivos do Projeto](##objetivos-do-projeto)
-* [Filosofia e Pilares](##filosofia-e-pilares)
-* [Paradigmas e Características Principais](##paradigmas-e-características-principais)
-* [Visão Geral e Sintaxe](##visão-geral-e-sintaxe)
-* [Evolução Futura: Orientação a Objetos](##evolução-futura-orientação-a-objetos)
-* [Principais Conceitos Envolvidos](##principais-conceitos-envolvidos)
-* [Estado Atual do Projeto](##estado-atual-do-projeto)
-* [Equipe](##equipe)
-* [Licença](##licença)
+* [Objetivos do Projeto](./##objetivos-do-projeto)
+* [Filosofia e Pilares](./##filosofia-e-pilares)
+* [Paradigmas e Características Principais](./##paradigmas-e-características-principais)
+* [Visão Geral e Sintaxe](./##visão-geral-e-sintaxe)
+* [Evolução Futura: Orientação a Objetos](./##evolução-futura-orientação-a-objetos)
+* [Principais Conceitos Envolvidos](./##principais-conceitos-envolvidos)
+* [Estado Atual do Projeto](./##estado-atual-do-projeto)
+* [Equipe](./##equipe)
+* [Licença](./##licença)
 
----
+***
 
 ## ✨ Objetivos do Projeto
 
@@ -30,7 +28,7 @@ Inspirada em linguagens funcionais e fortemente tipadas, a Kitsune Lang foca na 
 * Desenvolver um interpretador 100% funcional em Java
 * Entender como linguagens reais são construídas por dentro
 
----
+***
 
 ## ✨ Filosofia e Pilares
 
@@ -39,7 +37,7 @@ Inspirada em linguagens funcionais e fortemente tipadas, a Kitsune Lang foca na 
 * **Sintaxe limpa e distinta:** Sem `{}` para blocos. Usa `do ... end` para delimitação.
 * **Delimitação obrigatória:** Uso de `;` para separação de instruções.
 
----
+***
 
 ## 🧹 Paradigmas e Características Principais
 
@@ -53,7 +51,7 @@ Inspirada em linguagens funcionais e fortemente tipadas, a Kitsune Lang foca na 
 | 🔜 Compilada (futura)       | Planejada                       |
 | ✅ Modularização             | Suporte a pacotes e módulos     |
 
----
+***
 
 ## 🦊 Visão Geral e Sintaxe
 
@@ -84,21 +82,20 @@ LET NAME: String = 'Kitsune';
 
 Na Kitsune Lang, a forma como strings são delimitadas afeta seu comportamento:
 
-* **Aspas simples (`'`)**: definem strings **literais**. Interpolação **não é permitida**.
+*   **Aspas simples (`'`)**: definem strings **literais**. Interpolação **não é permitida**.
 
-  ```kitsune
-  let nome = 'Kurama';
-  print('Olá, ${nome}'); // Saída: Olá, ${nome}
-  ```
+    ```kitsune
+    let nome = 'Kurama';
+    print('Olá, ${nome}'); // Saída: Olá, ${nome}
+    ```
+*   **Aspas duplas (`"`)**: permitem **interpolação de variáveis** ou expressões dentro da string, usando `${}`.
 
-* **Aspas duplas (`"`)**: permitem **interpolação de variáveis** ou expressões dentro da string, usando `${}`.
+    ```kitsune
+    let nome = 'Kurama';
+    print("Olá, ${nome}"); // Saída: Olá, Kurama
+    ```
 
-  ```kitsune
-  let nome = 'Kurama';
-  print("Olá, ${nome}"); // Saída: Olá, Kurama
-  ```
-
----
+***
 
 ### Funções
 
@@ -205,7 +202,7 @@ package 'app'
 >> 'util' (PI, dobro, Ponto as Coord);
 ```
 
----
+***
 
 ## 📈 Evolução Futura: Orientação a Objetos (OO)
 
@@ -234,7 +231,8 @@ def enum ROLES {
     GUEST
 }
 ```
----
+
+***
 
 | Palavra reservada | Uso / Descrição                                   |
 | ----------------- | ------------------------------------------------- |
@@ -259,7 +257,7 @@ def enum ROLES {
 | `or`              | Operador lógico OR                                |
 | `not`             | Operador lógico NOT                               |
 
----
+***
 
 ## 🧠 Principais Conceitos Envolvidos
 
@@ -270,7 +268,7 @@ def enum ROLES {
 * Escopos, variáveis, controle de fluxo
 * Extensibilidade do interpretador
 
----
+***
 
 ## ✅ Estado Atual do Projeto
 
@@ -278,16 +276,16 @@ def enum ROLES {
 
 *
 
----
+***
 
 ## 🤝 Equipe
 
 Projeto desenvolvido por entusiastas de programação e compiladores, com foco em aprendizado e experimentação.
 
----
+***
 
 ## 📜 Licença
 
 MIT License — use, modifique e distribua à vontade!
 
----
+***
