@@ -1,12 +1,12 @@
 // Teste completo da linguagem Kitsune
 
-LET PI: Float = 3.14159;
-LET MSG: String = "Olá, ${nome}! Seu saldo é de ${saldo} créditos.";
+LET PI: float = 3.14159;
+LET MSG: string = "Olá, ${nome}! Seu saldo é de ${saldo} créditos.";
 
 def struct Pessoa {
-  nome: String;
-  idade: Int;
-  ativo: Bool;
+  nome: string;
+  idade: int;
+  ativo: bool;
 };
 
 let pessoa: Pessoa = {
@@ -15,22 +15,22 @@ let pessoa: Pessoa = {
   ativo: true
 };
 
-fun saudacao(nome: String, saldo: Float) -> String do
+fun saudacao(nome: string, saldo: float) -> string do
   return "Olá, ${nome}! Seu saldo é de ${saldo} créditos.";
 end
 
-fun soma(a: Int, b: Int) -> Int do
+fun soma(a: int, b: int) -> int do
   return a + b;
 end
 
-let resultado: Int = soma(10, 20);
+let resultado: int = soma(10, 20);
 
 if resultado > 10 and resultado < 100 do
-  let status: String = 'Aprovado';
+  let status: string = 'Aprovado';
 else if resultado == 100 do
-  let status: String = 'Perfeito';
+  let status: string = 'Perfeito';
 else do
-  let status: String = 'Reprovado';
+  let status: string = 'Reprovado';
 end
 
 while pessoa.idade < 35 do
@@ -38,17 +38,17 @@ while pessoa.idade < 35 do
 end
 
 for item in [1, 2, 3, 4, 5] do
-  let quadrado: Int = item * item;
+  let quadrado: int = item * item;
 end
 
 // Testando operadores aritméticos e relacionais
-let calc: Float = (5 + 3) * 2.5 - 1 / (2 + 1);
+let calc: float = (5 + 3) * 2.5 - 1 / (2 + 1);
 
 // Testando listas e objetos
-let lista: [Int] = [1, 2, 3, 4];
+let lista: [int] = [1, 2, 3, 4];
 let objeto: {
-  nome: String,
-  idade: Int
+  nome: string,
+  idade: int
 } = {
   nome: 'Carlos',
   idade: 22
@@ -59,4 +59,4 @@ fun identidade<T>(valor: T) -> T do
   return valor;
 end
 
-let x: Int = identidade<Int>(42);
+let x: int = identidade<int>(42);
